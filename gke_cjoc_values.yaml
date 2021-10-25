@@ -1,0 +1,35 @@
+apiVersion: v1
+
+ingress-nginx:
+  Enabled: true
+  controller:
+    ingressClass: nginx
+    nodeSelector:
+      kubernetes.io/os: linux
+    service:
+      externalTrafficPolicy: Local
+    admissionWebhooks:
+      patch:
+        nodeSelector:
+          kubernetes.io/os: linux
+  defaultBackend:
+    nodeSelector:
+      kubernetes.io/os: linux
+
+OperationsCenter:
+  # Set the HostName for the Operation Center
+  HostName: 'thosey.ps.beescloud.com'
+  # Setting ServiceType to ClusterIP creates ingress
+  ServiceType: ClusterIP
+  Ingress:
+    tls:
+    ## Set this to true in order to enable TLS on the ingress record
+      Enable: false 
+      # Create a certificate kubernetes and use it here.
+      SecretName: core-example-com-tls
+  # Configuration as Code (CasC) for Operations Center.
+  CasC:
+    # OperationsCenter.CasC.Enabled -- enable or disable CasC for Operations Center.
+    Enabled: true
+    # OperationsCenter.CasC.ConfigMapName -- the name of the ConfigMap used to configure Operations Center.
+    ConfigMapName: oc-casc-bundle

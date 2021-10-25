@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oc-casc-bundle
+  namespace: cloudbees-core
+data:
+  bundle.yaml: |
+    id: "casc-bundle-oc"
+    version: "5"
+    apiVersion: "1"
+    description: "CasC for OC bundle"
+    jcasc:
+      - "jenkins.yaml"
+  jenkins.yaml: |
+    jenkins:
+      systemMessage: "Operations Center configured using CasC."
+      numExecutors: 0
+    cloudBeesCasCServer:
+      visibility: true (2)
+    masterProvisioning:
+      kubernetes:
+        cpus: "3.0"
+        disk: 50
+        fsGroup: "4321"
+        javaOptions: "-XshowSettings:vm -XX:+AlwaysPreTouch -XX:+UseG1GC\
+          \ -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled -XX:+UseStringDeduplication\
+          \ -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.DNSMultiCast.disabled=true"
+        livenessInitialDelaySeconds: 300
+        livenessPeriodSeconds: 10
+        livenessTimeoutSeconds: 10
+        memory: 3072
+        ratio: 0.7
+        readinessFailureThreshold: 100
+        readinessInitialDelaySeconds: 30
+        readinessTimeoutSeconds: 5
+        terminationGracePeriodSeconds: 1200

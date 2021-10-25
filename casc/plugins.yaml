@@ -1,0 +1,6 @@
+plugins:
+  # In CAP
+  - { id: "cloudbees-casc-api" }
+  - { id: "configuration-as-code" }
+  - { id: "operations-center-sso" }
+  - { id: "operations-center-rbac" }
