@@ -1,3 +1,10 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: cloudbees-core
+  labels:
+    name: cloudbees-core
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
