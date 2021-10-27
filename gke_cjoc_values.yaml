@@ -30,6 +30,6 @@ OperationsCenter:
   # Configuration as Code (CasC) for Operations Center.
   CasC:
     # OperationsCenter.CasC.Enabled -- enable or disable CasC for Operations Center.
-    Enabled: true
+    Enabled: false
     # OperationsCenter.CasC.ConfigMapName -- the name of the ConfigMap used to configure Operations Center.
     ConfigMapName: oc-casc-bundle
