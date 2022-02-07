@@ -19,6 +19,7 @@ ingress-nginx:
 OperationsCenter:
   # Set the HostName for the Operation Center
   HostName: 'thosey.ps.beescloud.com'
+  Platform: gke
   # Setting ServiceType to ClusterIP creates ingress
   ServiceType: ClusterIP
   Ingress:
